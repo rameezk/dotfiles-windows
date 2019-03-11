@@ -1,0 +1,1 @@
+Write-Debug "[..] Beginning bootstrap process"
