@@ -37,3 +37,4 @@ choco install Firefox             --limit-output; <# pin; evergreen #> choco pin
 
 # The Codez
 choco install vim                 --limit-output
+choco install visualstudiocode    --limit-output
