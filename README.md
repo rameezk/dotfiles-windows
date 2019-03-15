@@ -5,8 +5,10 @@
 ## Running
 ### New Machine
 If it's a new machine, you probably won't be able to execute Powershell scripts yet. Running the following will allow you to run any local unsigned scripts but only signed scripts from the internet.
+
+You'll need to run the below command in a Powershell console with Administrator privileges.
 ```powershell
-set-executionpolicy remotesigned
+Set-ExecutionPolicy RemoteSigned
 ```
 
 ## Debugging and Verbosity
