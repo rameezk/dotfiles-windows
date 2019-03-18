@@ -7,6 +7,8 @@ if (![System.IO.Directory]::Exists($dotfilesTempDir)) {[System.IO.Directory]::Cr
 $sourceFile = Join-Path $dotfilesTempDir "dotfiles.zip"
 $dotfilesInstallDir = Join-Path $dotfilesTempDir "$repo-$branch"
 
+$profileDir = Split-Path -parent $profile
+
 
 function Download-File {
   param (
@@ -56,7 +58,7 @@ Push-Location $dotfilesInstallDir
 & .\bootstrap.ps1
 Pop-Location
 
-# $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-# $newProcess.Arguments = "-nologo";
-# [System.Diagnostics.Process]::Start($newProcess);
-# exit
+$newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+$newProcess.Arguments = "-nologo -File $profileDir\deps.ps1";
+[System.Diagnostics.Process]::Start($newProcess);
+exit

@@ -15,7 +15,7 @@ Set-ExecutionPolicy Unrestricted
 
 At this point, you probably don't have Git installed, so you can bootstrap the process initally without Git.
 ```powershell
-iex ((new-object net.webclient).DownloadString('https://raw.github.com/rameezk/dotfiles-windows/master/setup/install.ps1'))
+iex ((new-object net.webclient).DownloadString('https://raw.github.com/rameezk/dotfiles-windows/master/setup/new-machine.ps1'))
 ```
 
 ## Debugging and Verbosity
