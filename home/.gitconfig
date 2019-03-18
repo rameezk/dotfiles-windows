@@ -1,0 +1,23 @@
+[alias]
+	la = "!git config -l | grep alias | cut -c 7-"
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	code-review = difftool origin/master...
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	fl = log -u
+	dl = "!git ll -1"
+	dlc = diff --cached HEAD^
+	d = diff
+	dc = diff --cached
+	whatsnewupthere = "!git fetch origin && git log HEAD..origin/master"
+  unstage = reset HEAD --
+  squash = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+	clean-slate = clean -f
+  fza = "!git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add"
+	su = "submodule update --recursive --remote"
+	branch-name = "!git rev-parse --abbrev-ref HEAD"
+	publish = "!git push -u origin $(git branch-name)"
+	merge-complete = "!f(){ branch_to_clean=`git branch-name`; git co master && git pull && git br -d $branch_to_clean; };f"
