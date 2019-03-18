@@ -52,11 +52,12 @@ Download-File "https://github.com/$account/$repo/archive/$branch.zip" $sourceFil
 if ([System.IO.Directory]::Exists($dotfilesInstallDir)) {[System.IO.Directory]::Delete($dotfilesInstallDir, $true)}
 Unzip-File $sourceFile $dotfilesTempDir
 
-# Push-Location $dotfilesInstallDir
+Push-Location $dotfilesInstallDir
 # & .\bootstrap.ps1
-# Pop-Location
+& ls
+Pop-Location
 
 # $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
 # $newProcess.Arguments = "-nologo";
 # [System.Diagnostics.Process]::Start($newProcess);
-exit
+# exit
