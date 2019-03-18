@@ -13,7 +13,7 @@ You'll need to run the below command in a Powershell console with Administrator 
 Set-ExecutionPolicy Unrestricted
 ```
 
-At this point, you probably don't have Git installed, so you can bootstrap the process initally without Git.
+At this point, you probably don't have Git installed, so you can bootstrap the process initally without Git. This script will download this entire repo as a zip file, unzip it, copy over all files to your `$profile` directory and install all dependencies. 
 ```powershell
 iex ((new-object net.webclient).DownloadString('https://raw.github.com/rameezk/dotfiles-windows/master/setup/new-machine.ps1'))
 ```
