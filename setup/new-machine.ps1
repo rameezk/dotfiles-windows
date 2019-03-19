@@ -60,10 +60,10 @@ Pop-Location
 
 $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
 $newProcess.Arguments = "-nologo -File $profileDir\deps.ps1";
-[System.Diagnostics.Process]::Start($newProcess);
+[System.Diagnostics.Process]::Start($newProcess) | Out-Null;
 
 $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
 $newProcess.Arguments = "-nologo -File $profileDir\windows.ps1";
-[System.Diagnostics.Process]::Start($newProcess);
+[System.Diagnostics.Process]::Start($newProcess) | Out-Null;
 
 exit
