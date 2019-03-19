@@ -58,12 +58,25 @@ Push-Location $dotfilesInstallDir
 & .\bootstrap.ps1
 Pop-Location
 
-$newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-$newProcess.Arguments = "-nologo -File $profileDir\deps.ps1";
-[System.Diagnostics.Process]::Start($newProcess) | Out-Null;
+# $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+# $newProcess.Arguments = "-nologo -File $profileDir\deps.ps1";
+# [System.Diagnostics.Process]::Start($newProcess) | Out-Null;
 
-$newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-$newProcess.Arguments = "-nologo -File $profileDir\windows.ps1";
-[System.Diagnostics.Process]::Start($newProcess) | Out-Null;
+# $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+# $newProcess.Arguments = "-nologo -File $profileDir\windows.ps1";
+# [System.Diagnostics.Process]::Start($newProcess) | Out-Null;
+
+$pinfo = New-Object System.Diagnostics.ProcessStartInfo
+$pinfo.FileName = "Powershell"
+# $pinfo.RedirectStandardError = $true
+# $pinfo.RedirectStandardOutput = $true
+$pinfo.UseShellExecute = $false
+$pinfo.Arguments = "-nologo -File $profileDir\deps.ps1"
+$p = New-Object System.Diagnostics.Process
+$p.StartInfo = $pinfo
+$p.Start() | Out-Null
+#Do Other Stuff Here....
+$p.WaitForExit()
+$p.ExitCode
 
 exit
