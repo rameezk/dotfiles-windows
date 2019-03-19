@@ -61,14 +61,12 @@ Pop-Location
 Write-Host "[..] Installing Deps in a new shell"
 $depsProcess = Start-Process PowerShell -ArgumentList "-nologo -File $profileDir\deps.ps1" -PassThru -Wait
 $depsProcess.ExitCode
-Write-Host "[..] Installed Deps with exit code $depsProcess.ExitCode"
+Write-Host "[..] Installed Deps with exit code: " $depsProcess.ExitCode
 
 Write-Host "[..] Installing Windows things in a new shell"
 $windowsProcess = Start-Process PowerShell -ArgumentList "-nologo -File $profileDir\windows.ps1" -PassThru -Wait
 $windowsProcess.ExitCode
-Write-Host "[..] Installed Windows things with exit code $windowsProcess.ExitCode"
+Write-Host "[..] Installed Windows things with exit code: " $windowsProcess.ExitCode
 
 Write-Host "[..] Done all the things!!"
-
-Start-Sleep -c 5
-exit
+Write-Host "[..] Please reboot your machine"
