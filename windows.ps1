@@ -13,6 +13,7 @@ Write-Host "[..] Enabling Bash on Windows"
 Enable-WindowsOptionalFeature -Online -All -FeatureName "Microsoft-Windows-Subsystem-Linux" -NoRestart -WarningAction SilentlyContinue | Out-Null
 Write-Host "[..] Downloading Ubuntu"
 $ubuntuTempDir = Join-Path $env:TEMP "ubuntu"
+if (![System.IO.Directory]::Exists($ubuntuTempDir)) {[System.IO.Directory]::CreateDirectory($ubuntuTempDir)}
 Push-Location $ubuntuTempDir
 $ProgressPreference = 'SilentlyContinue'
 Invoke-WebRequest -Uri "https://aka.ms/wsl-ubuntu-1804" -OutFile Ubuntu.appx -UseBasicParsing
