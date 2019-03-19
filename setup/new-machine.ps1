@@ -58,12 +58,17 @@ Push-Location $dotfilesInstallDir
 & .\bootstrap.ps1
 Pop-Location
 
-$newProcess = Start-Process PowerShell -ArgumentList "-nologo -File $profileDir\deps.ps1" -PassThru -Wait
-$newProcess.ExitCode
+Write-Host "[..] Installing Deps in a new shell"
+$depsProcess = Start-Process PowerShell -ArgumentList "-nologo -File $profileDir\deps.ps1" -PassThru -Wait
+$depsProcess.ExitCode
+Write-Host "[..] Installed Deps with exit code $depsProcess.ExitCode"
 
+Write-Host "[..] Installing Windows things in a new shell"
+$windowsProcess = Start-Process PowerShell -ArgumentList "-nologo -File $profileDir\windows.ps1" -PassThru -Wait
+$windowsProcess.ExitCode
+Write-Host "[..] Installed Windows things with exit code $windowsProcess.ExitCode"
 
-# $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-# $newProcess.Arguments = "-nologo -File $profileDir\windows.ps1";
-# [System.Diagnostics.Process]::Start($newProcess) | Out-Null;
+Write-Host "[..] Done all the things!!"
 
+Start-Sleep -c 5
 exit
