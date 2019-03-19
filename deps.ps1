@@ -30,6 +30,7 @@ if ((which cinst) -eq $null) {
 # system and cli
 choco install curl                --limit-output
 choco install git.install         --limit-output -params '"/GitAndUnixToolsOnPath /NoShellIntegration"'
+choco install 7zip.install         --limit-output
 
 #browsers
 choco install GoogleChrome        --limit-output; <# pin; evergreen #> choco pin add --name GoogleChrome        --limit-output
@@ -38,3 +39,4 @@ choco install Firefox             --limit-output; <# pin; evergreen #> choco pin
 # The Codez
 choco install vim                 --limit-output
 choco install visualstudiocode    --limit-output
+choco install hyper               --limit-output
