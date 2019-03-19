@@ -11,3 +11,5 @@ if (!(Verify-Elevated)) {
 
 Write-Host "[..] Enabling Bash on Windows"
 Enable-WindowsOptionalFeature -Online -All -FeatureName "Microsoft-Windows-Subsystem-Linux" -NoRestart -WarningAction SilentlyContinue | Out-Null
+$ProgressPreference = 'SilentlyContinue'
+Invoke-WebRequest -Uri "https://aka.ms/wsl-ubuntu-1604" -OutFile Ubuntu.appx -UseBasicParsing
