@@ -58,30 +58,12 @@ Push-Location $dotfilesInstallDir
 & .\bootstrap.ps1
 Pop-Location
 
-$newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-$newProcess.Arguments = "-nologo -File $profileDir\deps.ps1";
-$depsProcess = New-Object System.Diagnostics.Process;
-$depsProcess.StartInfo = $newProcess
-$depsProcess.Start() | Out-Null
-$depsProcess.WaitForExit()
-$depsProcess.ExitCode()
+$newProcess = Start-Process PowerShell -ArgumentList "-nologo -File $profileDir\deps.ps1" -PassThru -Wait
+$newProcess.ExitCode
 
 
 # $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
 # $newProcess.Arguments = "-nologo -File $profileDir\windows.ps1";
 # [System.Diagnostics.Process]::Start($newProcess) | Out-Null;
-
-$pinfo = New-Object System.Diagnostics.ProcessStartInfo
-$pinfo.FileName = "notepad.exe"
-$pinfo.RedirectStandardError = $true
-$pinfo.RedirectStandardOutput = $true
-$pinfo.UseShellExecute = $false
-$pinfo.Arguments = ""
-$p = New-Object System.Diagnostics.Process
-$p.StartInfo = $pinfo
-$p.Start() | Out-Null
-#Do Other Stuff Here....
-$p.WaitForExit()
-$p.ExitCode
 
 exit
